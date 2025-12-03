@@ -336,52 +336,86 @@
       }
 
       // Handle form submission
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        
-        const submitButton = form.querySelector('button[type="submit"]');
-        const originalText = submitButton.textContent;
-        
-        // Disable button and show loading state
-        submitButton.disabled = true;
-        submitButton.textContent = "Submitting...";
-        
-        try {
-          const formData = new FormData(form);
-          const response = await fetch(form.action, {
-            method: "POST",
-            body: formData
-          });
+      if (form) {
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
           
-          const result = await response.json();
-          
-          if (result.success) {
-            submitButton.textContent = "Submitted Successfully!";
-            submitButton.style.background = "linear-gradient(120deg, #0e8463, #1fb8c0)";
-            form.reset();
-            
-            // Optionally redirect after 2 seconds
-            setTimeout(() => {
-              if (result.redirect_url) {
-                window.location.href = result.redirect_url;
-              }
-            }, 2000);
-          } else {
-            throw new Error(result.message || "Submission failed");
+          const submitButton = form.querySelector('button[type="submit"]');
+          if (!submitButton) {
+            console.error("Submit button not found");
+            return;
           }
-        } catch (error) {
-          submitButton.textContent = "Error - Try Again";
-          submitButton.style.background = "linear-gradient(120deg, #d32f2f, #f44336)";
-          console.error("Form submission error:", error);
           
-          // Reset button after 3 seconds
-          setTimeout(() => {
-            submitButton.disabled = false;
-            submitButton.textContent = originalText;
-            submitButton.style.background = "";
-          }, 3000);
-        }
-      });
+          const originalText = submitButton.textContent;
+          
+          // Disable button and show loading state
+          submitButton.disabled = true;
+          submitButton.textContent = "Submitting...";
+          
+          try {
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
+              method: "POST",
+              body: formData
+            });
+            
+            // Check if response is ok
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            // Try to parse as JSON
+            let result;
+            const contentType = response.headers.get("content-type");
+            if (contentType && contentType.includes("application/json")) {
+              result = await response.json();
+            } else {
+              const text = await response.text();
+              console.log("Response text:", text);
+              // Try to parse as JSON anyway
+              try {
+                result = JSON.parse(text);
+              } catch {
+                // If not JSON, assume success if status is 200
+                if (response.status === 200) {
+                  result = { success: true, message: "Form submitted successfully" };
+                } else {
+                  throw new Error(text || "Submission failed");
+                }
+              }
+            }
+            
+            if (result.success) {
+              submitButton.textContent = "Submitted Successfully!";
+              submitButton.style.background = "linear-gradient(120deg, #0e8463, #1fb8c0)";
+              form.reset();
+              
+              // Optionally redirect after 2 seconds
+              setTimeout(() => {
+                if (result.redirect_url) {
+                  window.location.href = result.redirect_url;
+                }
+              }, 2000);
+            } else {
+              throw new Error(result.message || "Submission failed");
+            }
+          } catch (error) {
+            submitButton.textContent = "Error - Try Again";
+            submitButton.style.background = "linear-gradient(120deg, #d32f2f, #f44336)";
+            console.error("Form submission error:", error);
+            alert("Error submitting form: " + error.message);
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+              submitButton.disabled = false;
+              submitButton.textContent = originalText;
+              submitButton.style.background = "";
+            }, 3000);
+          }
+        });
+      } else {
+        console.error("Form with id 'intakeForm' not found");
+      }
             // Handle file upload preview for government ID
       const idInput = document.getElementById("governmentId");
       const idPreview = document.getElementById("idPreview");
@@ -422,3 +456,4 @@
     </script>
   </body>
 </html>
+
